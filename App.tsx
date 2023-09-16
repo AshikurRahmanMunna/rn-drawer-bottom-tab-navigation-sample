@@ -5,6 +5,7 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import UserScreen from "./screens/UserScreen";
 import { RootDrawerParamsList } from "./types/navigation";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 const BottomTab = createBottomTabNavigator<RootDrawerParamsList>();
 export default function App() {
   return (
@@ -18,8 +19,24 @@ export default function App() {
         }}
         initialRouteName="User"
       >
-        <BottomTab.Screen name="Welcome" component={WelcomeScreen} />
-        <BottomTab.Screen name="User" component={UserScreen} />
+        <BottomTab.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="home" color={color} size={size} />
+            ),
+          }}
+        />
+        <BottomTab.Screen
+          name="User"
+          component={UserScreen}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="person" color={color} size={size} />
+            ),
+          }}
+        />
       </BottomTab.Navigator>
       {/* <Drawer.Navigator
         screenOptions={{
